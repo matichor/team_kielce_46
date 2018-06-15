@@ -1,0 +1,14 @@
+version: '2'
+services:
+    reservationsport-app:
+        image: reservationsport
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://reservationsport-postgresql:5432/ReservationSport
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    reservationsport-postgresql:
+        extends:
+            file: postgresql.yml
+            service: reservationsport-postgresql
